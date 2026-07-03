@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SUM — DAMASO FLORES, GIAN FRANCO</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="sum-header">
+      <div class="sum-header__menu" aria-hidden="true">
+        <span></span><span></span><span></span>
+      </div>
+      <div class="sum-header__center">
+        <span class="sum-header__timer" id="session-timer">00:14:24</span>
+        <div class="sum-header__user">
+          <span>DAMASO FLORES, GIAN FRANCO</span>
+          <span aria-hidden="true">▾</span>
+        </div>
+      </div>
+      <div class="sum-header__logout">
+        <span aria-hidden="true">⏻</span>
+        <span>Salir</span>
+      </div>
+    </header>
+
+    <main class="sum-main">
+      <section class="sum-card sum-profile">
+        <div class="sum-profile--left">
+          <img
+            class="sum-profile__photo"
+            src="assets/foto.jpg"
+            alt="Foto de DAMASO FLORES, GIAN FRANCO"
+          />
+          <div class="sum-profile__identity">
+            <h1>DAMASO FLORES, GIAN FRANCO</h1>
+            <p>Estudiante</p>
+          </div>
+        </div>
+        <div class="sum-fields">
+          <div class="sum-field">
+            <span class="sum-field__label">Código</span>
+            <span class="sum-field__value">18200082</span>
+          </div>
+
+          <div class="sum-field">
+            <span class="sum-field__label">Facultad</span>
+            <span class="sum-field__value"
+              >20 - INGENIERÍA DE SISTEMAS E INFORMÁTICA</span
+            >
+          </div>
+
+          <div class="sum-field">
+            <span class="sum-field__label">Programa</span>
+            <span class="sum-field__value"
+              >2 - E.P. de Ingeniería de Software</span
+            >
+          </div>
+
+          <div class="sum-field">
+            <span class="sum-field__label">Especialidad</span>
+            <span class="sum-field__value">0 - Estudios Generales</span>
+          </div>
+
+          <div class="sum-field">
+            <span class="sum-field__label">Periodo Académico</span>
+            <span class="sum-field__value">2026-1</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="sum-card sum-info-card">
+        <span class="sum-info-card__badge">Mi Información</span>
+        <h2>Información Personal Académica</h2>
+        <ul>
+          <li>Nombre, Fecha y Lugar de Nacimiento, Estado Civil, Sexo</li>
+          <li>Domicilio, Teléfono y Correo Electrónico</li>
+          <li>Facultad, Programa Académico, Especialidad</li>
+          <li>Plan de Estudios, Año y Modalidad de Ingreso</li>
+          <li>Situación Académica y Estado de Permanencia</li>
+          <li>Promedio Ponderado, Número de Períodos Matriculados</li>
+        </ul>
+        <button type="button" class="sum-info-card__btn" disabled>
+          Ver más... <span aria-hidden="true">→</span>
+        </button>
+      </section>
+    </main>
+
+    <script>
+      (function () {
+        var el = document.getElementById("session-timer");
+        if (!el) return;
+        var parts = el.textContent.trim().split(":").map(Number);
+        if (parts.length !== 3 || parts.some(isNaN)) return;
+        var total = parts[0] * 3600 + parts[1] * 60 + parts[2];
+        setInterval(function () {
+          if (total <= 0) return;
+          total -= 1;
+          var h = String(Math.floor(total / 3600)).padStart(2, "0");
+          var m = String(Math.floor((total % 3600) / 60)).padStart(2, "0");
+          var s = String(total % 60).padStart(2, "0");
+          el.textContent = h + ":" + m + ":" + s;
+        }, 1000);
+      })();
+    </script>
+  </body>
+</html>
